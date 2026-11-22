@@ -26,10 +26,8 @@ class FormTest extends TestCase
         $block = (new \ReflectionClass(Form::class))->newInstanceWithoutConstructor();
         $block->setData('store_id', $storeId);
         $managerProperty = new \ReflectionProperty(Template::class, '_storeManager');
-        $managerProperty->setAccessible(true);
         $managerProperty->setValue($block, $storeManager);
         $informationProperty = new \ReflectionProperty(Form::class, 'storeInformation');
-        $informationProperty->setAccessible(true);
         $informationProperty->setValue($block, $information);
 
         self::assertSame(['name' => 'Current store'], $block->getStoreInformation());
